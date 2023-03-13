@@ -1,0 +1,144 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\def\inputGnumericTable{}
+\usepackage[latin1]{inputenc}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{ifthen}
+\usepackage{amsmath}
+\usepackage[none]{hyphenat}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage{siunitx}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{extarrows}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{commath}
+\usepackage{gensymb}
+\usepackage{amssymb}
+\usepackage{multicol}
+%\usepackage[utf8]{inputenc}
+\lstset{
+ frame=single,
+ breaklines=true
+}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}	 
+%\usepackage{exsheets}% also loads the `tasks' package
+\usepackage{atbegshi}
+\AtBeginDocument{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
+
+%new macro definitions
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newenvironment{amatrix}[1]{%
+	\left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+	\end{array}\right)
+}
+
+\newcommand{\myaugvec}[2]{\ensuremath{\begin{amatrix}{#1}#2\end{amatrix}}}
+\providecommand{\norm}[1]{\left\1Vert#1\right\rVert}
+\let\vec\mathbf{}
+
+
+%\SetEnumitemKey{twocol}{
+% before=\raggedcolumns\begin{multicols}{2},
+% after=\end{multicols}}
+%\SetEnumitemKey{fourcol}{
+% before=\raggedcolumns\begin{multicols}{4},
+% after=\end{multicols}} 
+
+
+\begin{document}
+\begin{center}
+\title{\textbf{TRIANGLES}}
+\date{\vspace{-5ex}}
+\maketitle
+\end{center}
+\section*{9$^{th}$Math - Chapter 7}
+\section*{Problem}
+In the given figure,AC=AE,AB=AD and $\angle BAD=\angle EAC$.Show that BC=DE.
+\begin{figure}[!h]
+	\begin{center}
+	\includegraphics[width=5in]{./fig/fig.pdf}
+	\end{center}
+\caption{}
+\label{figure}
+\end{figure}
+\section*{Construction}
+The input parameters for construction.\\
+
+\begin{table}[!h]
+\centering
+\input{./fig/table.tex}
+\caption{}
+\label{Inputs}
+\end{table}
+\begin{align}
+b&=\sqrt{a^2+c^2-2ac\cos\theta}\\
+\vec{A}=c\myvec{\cos\theta\\\sin\theta},
+\vec{B}&=\myvec{0\\0},
+\vec{C}=\myvec{a\\0},
+\vec{D}=\brak{2c\sin\frac{\theta}{2}}\vec{e_1}\\
+\angle BCA&=cos^{-1}\brak{\frac{a^2+b^2-c^2}{2ab}}\\
+\angle ACE&=90\degree-\frac{\theta}{2}\\
+\phi&=180\degree-\brak{\angle BCA+\angle ACE}\\
+\vec{E}&=\vec{C}+\brak{2b\sin\frac{\theta}{2}}\myvec{\cos\phi\\\sin\phi}\\
+\end{align}
+\solution
+\textbf{Given:}
+\begin{align}
+    \vec{A}-\vec{C}&=\vec{A}-\vec{E}\\
+    \vec{A}-\vec{B}&=\vec{A}-\vec{D}\\
+    \angle{BAD}&=\angle{EAC}    
+\end{align}
+\textbf{To prove :}
+\begin{align}
+    \vec{B}-\vec{C}=\vec{D}-\vec{E}
+\end{align}
+\textbf{Proof}\\
+In $\triangle ABC $ and in $\triangle ADE$
+\begin{align}
+\norm{\vec{A}-\vec{B}}=&\norm{\myvec{2.5\\4.33}}=5\\
+\norm{\vec{A}-\vec{D}}=&\norm{\myvec{-2.6\\4.33}}=5\\
+\implies\norm{\vec{A}-\vec{B}}=&\norm{\vec{A}-\vec{D}}
+\label{eq:1}\\
+\norm{\vec{A}-\vec{C}}=&\norm{\myvec{-5.5\\4.33}}=7\\
+\norm{\vec{A}-\vec{E}}=&\norm{\myvec{-6.5\\-2.5}}=7\\
+\implies\norm{\vec{A}-\vec{C}}=&\norm{\vec{A}-\vec{E}}
+\label{eq:2}\\
+\angle BAC=&\cos^{-1}\frac{\brak{\vec{A}-\vec{B}}^{\top}\brak{\vec{A}-\vec{C}}}{\norm{\vec{A}-\vec{B}}\norm{\vec{A}-\vec{C}}}=82\degree
+\label{eq:3}\\
+\angle DAE=&\cos^{-1}\frac{\brak{\vec{A}-\vec{D}}^{\top}\brak{\vec{A}-\vec{E}}}{\norm{\vec{A}-\vec{D}}\norm{\vec{A}-\vec{E}}}=82\degree
+\label{eq:4}
+\end{align}
+from $\eqref{eq:3}$ and $\eqref{eq:4}$
+\begin{align}
+\angle BAC=&\angle DAE
+\label{eq:5}
+\end{align}
+from $\eqref{eq:1}$,$\eqref{eq:2}$ and $\eqref{eq:5}$\\
+\begin{align}
+\triangle{ABC} \cong \triangle{ADE}
+\label{eq:6}
+\end{align} 
+from $\eqref{eq:6}$\\
+\begin{align}   
+\vec{B}-\vec{C} &= \vec{D}-\vec{E}
+\end{align}
+\end{document}
+
+
